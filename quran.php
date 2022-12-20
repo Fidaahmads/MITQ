@@ -9,6 +9,7 @@
 	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="freehtml5.co" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<!-- 
 	//////////////////////////////////////////////////////
@@ -67,6 +68,10 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
 	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 	</head>
@@ -138,20 +143,19 @@
 	<div class="row animate-box">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
 					<h2>Baca Qur'an</h2>
+					<p><a class="btn btn-primary btn-lg" id="get-data">Klik Disini!</a></p>
 				</div>
 	</div>
-				<br>
 		<div class="container">         
 					<div class="row">
                     
 						<div class="col-md-6"><h2>Tampilan Surat<h2>
-						<p><a class="btn btn-primary btn-lg" id="get-data">Klik Disini!</a></p>
 						<div id="show-data"></div>
                     	</div>
 
-						<div class="col-md-6"><h2>Tampilan Ayat<h2></div>
+						<div class="col-md-6"><h2>Tampilan Ayat<h2>
 						<div id="show-data2"></div>
-                    	</div>
+						</div>
         </div>
     </div>
    
@@ -235,7 +239,7 @@
 	</div>
 
 	<!-- APIquran -->
-<script>
+	<script>
         $(document).ready(() => {
 
             const $showData = $('#show-data');
@@ -255,9 +259,14 @@
                     // mengatur ulang format respon dari json menjadi html
                     //   const head = '<li>0: Default</li>'
                     const markup = respon.data
-                        .map(item => `<li class="surat" data-nomer="${item.number}">
-                Nama Surat: ${item.number}: ${item.name}
-            </li>`)
+                        .map(item => `<table class="table table-danger">
+		<tr>
+		<td scope="row" class="surat" data-nomer="${item.number}">${item.number}</td>
+		<td class="surat" data-nomer="${item.number}">${item.name}</td>
+		<td class="surat" data-nomer="${item.number}">${item.englishName}</td>
+		</tr>
+	</table>`)
+
                         .join('');
 
                     const list = $('<ul />').html(markup);
@@ -273,10 +282,10 @@
                             console.log(respon.code);
                             console.log(respon.status);
                             const markup = respon.data.ayahs
-                                .map(item => `<li> ${item.text}</li>`)
+                                .map(item => `<tr><td> ${item.text}</td></tr>`)
                                 .join('');
 
-                            const list = $('<ul />').html(markup);
+                            const list = $('<table table class="table table-secondary">').html(markup);
 
                             $('#show-data2').html(list);
 
