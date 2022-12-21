@@ -104,6 +104,7 @@
 							<li><a href="teacher.html">Program</a></li>
 							<li><a href="blog.html">Pendaftaran</a></li>	
 							<li class="active"><a href="contact.php">Kontak</a></li>
+							<li><a href="pendaftaran.php">Data Pendaftar</a></li>
 						</ul>
 					</div>
 				</div>

@@ -112,6 +112,7 @@
 							<li><a href="blog.html">Pendaftaran</a></li>	
 							<li><a href="contact.php">Kontak</a></li>
 							<li class="active"><a href="quran.php">Baca Qur'an</a></li>
+							<li><a href="pendaftaran.php">Data Pendaftar</a></li>
 						</ul>
 					</div>
 				</div>
