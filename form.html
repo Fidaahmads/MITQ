@@ -403,8 +403,14 @@
 	url: "action.php",
 	data: $(this).serialize(), // get all form field value in serialize form
 	success: function(){
+	$("#firstname").val('');
+	$("#lastname").val('');
+	$("#birth").val('');
+	$("#nohp").val('');
+	$("#email").val('');
+	$("#lulusan").val('');
+	$("#motivasi").val('');	
 	$("#show_message").fadeIn();
-	//$("#ajax-form").fadeOut();
 	}
 	});
 	});  
